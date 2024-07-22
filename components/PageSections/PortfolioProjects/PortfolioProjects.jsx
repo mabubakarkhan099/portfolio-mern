@@ -16,9 +16,11 @@ function PortfolioProjects() {
           </div>
         </div>
         <div className="grid mobile:grid-cols-1 sm:grid-cols-3 gap-5 py-5">
+          {[...Array(5)].map((_, index) => (
             <ProjectCard />
-            <ProjectCard />
-            <ProjectCard />
+            
+          ))}
+
         </div>
       </div>
     </section>

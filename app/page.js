@@ -1,4 +1,5 @@
 
+import ConnectSection from "@/components/PageSections/ConnectSection/ConnectSection";
 import Experience from "@/components/PageSections/Experience/Experience";
 import HeroSection from "@/components/PageSections/HeroSection/HeroSection";
 import HireMeSection from "@/components/PageSections/HireMeSection/HireMeSection";
@@ -14,6 +15,7 @@ export default function Home() {
       <Experience />
       <HireMeSection />
       <PortfolioProjects />
+      <ConnectSection />
     </>
   );
 }

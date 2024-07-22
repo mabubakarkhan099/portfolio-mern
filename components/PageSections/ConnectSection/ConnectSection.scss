@@ -1,0 +1,12 @@
+.connect-section {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/black_orange wave bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  .shadow-none{
+    box-shadow: none !important;
+  }
+  .input::placeholder{
+    @apply text-white;
+  }
+
+}

@@ -1,0 +1,10 @@
+.project-card{
+    &:hover{
+        .btn{
+            button{
+                @apply bg-orange-400;
+                @apply text-white;
+            }
+        }
+    }
+}
