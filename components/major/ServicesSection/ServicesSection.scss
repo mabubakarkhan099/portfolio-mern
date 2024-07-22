@@ -1,0 +1,18 @@
+.services-section{
+    margin-top: -5px;
+    // background-color: rgba(0,0,0,0.5);
+    background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url("/light-yellow-abstract-background-3d-illustration-3d-rendering 3.png"),
+        url("/light-yellow-abstract-background-3d-illustration-3d-rendering 2.png"),
+        url("/light-yellow-abstract-background-3d-illustration-3d-rendering 1.png"),
+        url("/black_orange wave bg.jpg");
+        background-position: 50% 50%, 0% 50%, 50% 0%, 100% 50%, 50% 50%;
+        background-size: cover, 30%, 15%, 40%, cover;
+        background-repeat: no-repeat;
+        transition: 0.5s;
+
+        &:hover{
+            background-position: 50% 50%, calc(0% - 100px) 20%, 50% 30%, calc(100% + 100px) 150%, 50% 50%;
+        }
+}

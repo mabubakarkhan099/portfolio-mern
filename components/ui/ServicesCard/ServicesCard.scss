@@ -1,0 +1,68 @@
+@import "@/app/sass/mixin";
+.service-card {
+    position: relative;
+    &:hover{
+        .top-section{
+           
+             @apply bg-orange-400
+            
+        }
+    }
+    .top-section{
+        /* From https://css.glass */
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border: 1px solid rgba(255, 255, 255, 0.76);
+        z-index: -1;
+        transition: 0.3s;
+        
+    }
+    .bottom-section{
+        position: relative;
+        margin-top: -50px;
+        z-index: 1;
+        .image-wrapper{
+            -webkit-mask-image: url(/services_card_mask.svg);
+            mask-image: url(/services_card_mask.svg);
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+        }
+        &::before, &::after{
+            content: "";
+            display: block;
+            width: 85%;
+            height: 100px;
+            position: absolute;
+            @apply bg-gray-500;
+            border-radius: 30px;
+            z-index: -1;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            
+        }
+        &::after{
+            width: 75%;
+            @apply bg-gray-600;
+            @apply opacity-50;
+            z-index: -2;
+            top: -60px;
+            transition: 0.3s;
+        }
+        .goto-link{
+            box-sizing: border-box;
+            border-radius: 50%;
+            aspect-ratio: 1/1;
+            width: 27%;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            
+        }
+    }
+  
+}
+
