@@ -1,0 +1,19 @@
+nav{
+    // background: radial-gradient(circle farthest-corner at center center, #ffcc45 0%, #000000 0%);
+    // transition: 0.5s;
+    // &:hover{
+    // background: radial-gradient(circle farthest-corner at center center, #ffcc45 0%, #000000 100%);
+    // }
+    .active{
+        @apply bg-orange-400;
+
+    }
+    .nav-item{
+        @apply rounded-full;
+        padding: 15px 30px;
+        
+        .nav-link{
+            @apply text-white;
+        }
+    }
+}

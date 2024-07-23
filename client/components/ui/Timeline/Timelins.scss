@@ -1,0 +1,28 @@
+.timeline{
+    .timeline-gfx{
+        position: relative;
+        .line{
+            width: 3px;
+            height: calc(100% - 30px);
+            border-right: 3px dashed #111827;
+        }
+        .center-dot{
+            // box-sizing: border-box;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            padding: 5px;
+            
+            .circle{
+                border-radius: 50%;
+                width: 100%;
+                height: 100%;
+                @apply bg-orange-400;
+            }
+
+        }
+
+
+    }
+
+}

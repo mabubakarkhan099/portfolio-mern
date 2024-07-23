@@ -1,0 +1,86 @@
+@import "@/app/sass/mixin";
+
+.btn-hello {
+  outline: 1px solid black;
+  position: relative;
+  cursor: default;
+  &:hover {
+    background: white;
+    &::after {
+      transform: scale(1.2);
+    }
+  }
+  &::after {
+    content: "";
+    display: block;
+    aspect-ratio: 1/1;
+    width: 25px;
+    background: url("/vectorBars.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    right: -17px;
+    top: -17px;
+    transition: 0.1s;
+  }
+}
+.hero-section {
+  z-index: -1;
+  //   outline: 2px solid black;
+  //   @apply bg-red-300;
+  overflow: hidden;
+  .info-heading {
+    position: relative;
+    &::before {
+      content: "";
+      display: block;
+      aspect-ratio: 1/1;
+      width: 75px;
+      background: url("/vectorBars2.svg");
+      background-repeat: no-repeat;
+      background-size: contain;
+      position: absolute;
+      left: -45px;
+      bottom: -45px;
+      transition: 0.1s;
+      @include mobile {
+        width: 30px;
+        left: -20px;
+        bottom: -20px;
+      }
+    }
+  }
+  .image-grid {
+    background: url("/Ellipse 2.svg");
+    background-repeat: no-repeat;
+    background-position: center calc(100% - -90px);
+    background-size: contain;
+    position: relative;
+    @include mobile {
+      background-position: center calc(100% - 0px);
+    }
+    .hire-btn-wrapper{
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      // border-radius: 100px !important;
+      background: rgba(194, 194, 194, 0.5);
+      backdrop-filter: blur(5px);
+      outline: 1px solid rgb(237, 237, 237);
+    }
+    .image-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-top: -50px;
+
+      @include mobile {
+        img {
+          width: 300px;
+        }
+        // width: 200px;
+        margin-top: -20px;
+      }
+    }
+  }
+}
