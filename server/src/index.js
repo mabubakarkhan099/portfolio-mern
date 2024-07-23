@@ -4,7 +4,7 @@ require('dotenv').config();
 
 const port = process.env.PORT; 
 const mongoUri = process.env.MongoUri;
-const projectRoutes = require('./routes/projectsRoute'); 
+const projectRoutes = require('./routes/projectRoutes'); 
 
 const app = express();
 
