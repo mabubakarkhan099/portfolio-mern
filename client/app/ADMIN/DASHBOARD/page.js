@@ -1,6 +1,12 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Checkbox } from "@/components/ui/checkbox";
+
 import "../dashboard.scss";
+import { Button } from "@/components/ui/button";
 function page() {
   return (
     <section className="admin-section min-h-screen">
@@ -17,12 +23,42 @@ function page() {
                 Password
               </TabsTrigger>
             </TabsList>
-            <TabsContent value="projects" className="bg-white rounded-xl">
+            <TabsContent value="projects" className="bg-white rounded-xl ">
               <div className="p-5 ">
-                <p>Lorem ipsum dolor sit amet.</p>
+                <form>
+                  <div className="grid gap-5">
+                    <Input type="text" className="" placeholder="Project Title (Keep it minimal)" />
+                    <Textarea placeholder="Project Description..." />
+                    <Input type="text" className="" placeholder="Enter Framewors (Reactjs, NextJs, Tailwind, etc)" />
+                    <RadioGroup defaultValue="option-one" className="flex gap-4">
+                      <p className="fw-bold">Project Type</p>
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="option-one" id="option-one" />
+                        <Label htmlFor="option-one">Real</Label>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="option-two" id="option-two" />
+                        <Label htmlFor="option-two">Practice</Label>
+                      </div>
+                    </RadioGroup>
+                    <div className="flex gap-3 items-center">
+                      <Label htmlFor="thumbnail" className="fw-bold">
+                        Thumbnail
+                      </Label>
+                      <Input type="file" id="thumbnail" className="" accept=".jpg, .jpeg, .png, .webp, .bmp" />
+                    </div>
+                    <div className="flex gap-3 items-center">
+                      <Label htmlFor="thumbnail" className="fw-bold">
+                        Screenshots
+                      </Label>
+                      <Input type="file" id="thumbnail" className="" multiple accept=".jpg, .jpeg, .png, .webp, .bmp" />
+                    </div>
+                    <Button type="submit" >Add Project</Button>
+                  </div>
+                </form>
               </div>
             </TabsContent>
-            <TabsContent value="password" className="bg-white rounded-xl">
+            <TabsContent value="password" className="bg-white rounded-xl ">
               <div className="p-5 ">
                 <p>Lorem ipsum dolor sit amet.</p>
               </div>
@@ -35,12 +71,3 @@ function page() {
 }
 
 export default page;
-
-{
-  /* <form>
-<div className="flex flex-wrap gap-5 justify-center">
-<Input type="text" className="mobile:w-full sm:w-[45%]" placeholder="Enter Project Title (Keep it minimal)" />
-<Input type="text" className="mobile:w-full sm:w-[45%]" placeholder="Enter Project Type" />
-</div>
-</form> */
-}
