@@ -12,14 +12,13 @@ const projectSchema = new mongoose.Schema({
   },
   type: {
     type: String,
-    enum: ['real', 'practice'],
     required: true,
   },
   frame_work: {
     type: String,
     required: true
   },
-  websiteLink: {
+  website_link: {
     type: String,
     required: true,
     validate: {
@@ -29,7 +28,7 @@ const projectSchema = new mongoose.Schema({
       message: props => `${props.value} is not a valid URL!`
     }
   },
-  githubLink: {
+  github_link: {
     type: String,
     required: true,
     validate: {

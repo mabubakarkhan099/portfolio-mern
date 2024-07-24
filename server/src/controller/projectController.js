@@ -2,7 +2,7 @@ const Project = require('../model/projectModel');
 
 const createProject = async (req, res) => {
   try {
-    const { title, description, type, frame_work, websiteLink, githubLink } = req.body;
+    const { title, description, type, frame_work, website_link, github_link } = req.body;
     const thumbnail = req.files['thumbnail'] ? req.files['thumbnail'][0].path : null;
     const screenshots = req.files['screenshots'] ? req.files['screenshots'].map(file => file.path) : [];
 
@@ -12,8 +12,8 @@ const createProject = async (req, res) => {
       description,
       type,
       frame_work,
-      websiteLink,
-      githubLink,
+      website_link,
+      github_link,
       thumbnail,
       screenshots
     });
