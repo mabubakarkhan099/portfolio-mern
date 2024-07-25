@@ -12,22 +12,6 @@ import axios from "axios";
 
 function ProjectForm() {
   const serverIP = process.env.NEXT_PUBLIC_SERVER_URL;
-
-  // const data = async () => {
-  //   const res = await axios.post(`${serverIP}/projects`, {
-  //     title,
-  //     description,
-  //     type,
-  //     frame_work,
-  //     website_link,
-  //     github_link,
-  //     thumbnail,
-  //     screenshots,
-  //   });
-  // };
-
-  
-
   const initialFormState = {
     title: "",
     description: "",
@@ -42,14 +26,23 @@ function ProjectForm() {
   const [formData, setFormData] = useState(initialFormState);
 
   const handleFormChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
+    const { name, value, files } = e.target;
+
+    if (files) {
+      // Handle file input
+      setFormData((prevState) => ({
+        ...prevState,
+        [name]: files,
+      }));
+    } else {
+      setFormData((prevState) => ({
+        ...prevState,
+        [name]: value,
+      }));
+    }
   };
+
   const handleRadioChange = (e) => {
-    // console.log("radio changed");
     if (e.target.checked) {
       const radioValue = e.target.value;
 
@@ -60,52 +53,48 @@ function ProjectForm() {
     }
   };
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     try {
-      // Make sure serverIP is defined and not empty
       if (!serverIP) {
-        console.error('Server IP address is not defined');
+        console.error("Server IP address is not defined");
         return;
       }
-  
+
+      // Create a FormData object and append all form data
+      const formDataToSend = new FormData();
+      for (const key in formData) {
+        if (formData[key] instanceof FileList) {
+          // Append each file separately
+          for (let i = 0; i < formData[key].length; i++) {
+            formDataToSend.append(key, formData[key][i]);
+          }
+        } else {
+          formDataToSend.append(key, formData[key]);
+        }
+      }
+
       // Perform the POST request using axios
-      const res = await axios.post(`${serverIP}/projects`, formData, {
-        headers: { 'Content-Type': 'application/json' }
+      const res = await axios.post(`${serverIP}/projects`, formDataToSend, {
+        headers: { "Content-Type": "multipart/form-data" },
       });
-  
-      // Handle response or any further logic after successful POST
-      console.log('Post successful:', res.data);
-  
-      // Optionally, reset the form after successful submission
+
+      console.log("Post successful:", res.data);
+
+      // Reset the form after successful submission
       setFormData(initialFormState);
-  
     } catch (error) {
-      // Handle any errors that occur during the POST request
-      console.error('Error posting data:', error);
+      console.error("Error posting data:", error);
     }
   };
-  
-  
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-
-  //   console.log(formData);
-  //   // setFormData(initialFormState);
-  //   // You can dispatch or perform any other action here with formData
-  // };
 
   return (
     <>
       <form onSubmit={handleSubmit}>
         <div className="grid gap-5">
           <TextInput name="title" value={formData.title} icon={<FaHeading />} id="projectTitle" placeholder="Project Title (Keep it minimal)" required={true} onchange={handleFormChange} />
-          
           <TextareaInput name="description" icon={<FaInfo />} id="projectDescription" placeholder="Project Description..." required={false} value={formData.description} onchange={handleFormChange} />
-
-          
           <TextInput name="frame_work" value={formData.frame_work} icon={<FaCode />} id="ProjectFramework" placeholder="Enter Frameworks (Reactjs, NextJs, Tailwind, etc)" required={true} onchange={handleFormChange} />
           <TextInput name="github_link" value={formData.github_link} icon={<LuGithub />} id="ProjectGithub" placeholder="Enter Github Link (Required)" required={true} onchange={handleFormChange} />
           <TextInput name="website_link" value={formData.website_link} icon={<FaLink />} id="ProjectWebsite" placeholder="Enter Live Web Link (If Available)" required={false} onchange={handleFormChange} />
@@ -126,13 +115,13 @@ function ProjectForm() {
             <Label htmlFor="thumbnail" className="fw-bold">
               Thumbnail
             </Label>
-            <Input type="file" id="thumbnail" className="" accept=".jpg, .jpeg, .png, .webp, .bmp" name="thumbnail" value={formData.thumbnail} onChange={handleFormChange} required />
+            <Input type="file" id="thumbnail" className="" accept=".jpg, .jpeg, .png, .webp, .bmp" name="thumbnail" onChange={handleFormChange} required />
           </div>
           <div className="flex gap-3 items-center">
             <Label htmlFor="screenshots" className="fw-bold">
               Screenshots
             </Label>
-            <Input type="file" id="screenshots" className="" multiple accept=".jpg, .jpeg, .png, .webp, .bmp" name="screenshots" value={formData.screenshots} onChange={handleFormChange} required />
+            <Input type="file" id="screenshots" className="" multiple accept=".jpg, .jpeg, .png, .webp, .bmp" name="screenshots" onChange={handleFormChange} required />
           </div>
           <Button type="submit" className="bg-orange-400 hover:bg-orange-500">
             Add Project
