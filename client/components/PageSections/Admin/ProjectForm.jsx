@@ -78,7 +78,9 @@ function ProjectForm() {
       // Perform the POST request using axios
       const res = await axios.post(`${serverIP}/create-projects`, formDataToSend, {
 
+
         headers: { "Content-Type": "multipart/form-data" },
+
       });
 
       console.log("Post successful:", res.data);

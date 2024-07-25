@@ -21,24 +21,38 @@ const createProject = async (req, res) => {
     // Save the document to the database
     await newProject.save();
 
-    // Send success response
-    res.status(201).json({ message: 'Project created successfully', project: newProject });
-  } catch (error) {
-    return res.status(500).json({ error: error || error.message, data: null, message: 'Error in creating project.' });
+    // Send success response with image URLs
+    res.status(201).json({ 
+      message: 'Project created successfully', 
+      project: {
+        ...newProject._doc,
+        thumbnail: thumbnail ? `${req.protocol}://${req.get('host')}/${thumbnail}` : null,
+        screenshots: screenshots.map(screenshot => `${req.protocol}://${req.get('host')}/${screenshot}`)
+      }
+    });
+  } catch (err) {
+    console.error('Error creating project:', err);
+    res.status(400).json({ message: 'Error creating project', error: err.message });
   }
 };
 
 const getAllProject = async (req, res) => {
   try {
-    console.log("log1");
     const projects = await Project.find();
-    console.log("log2");
-    return res.status(200).json({ error: null, data: projects, message: 'Projects retrieved successfully.' });
-    
-   } catch (error) {
-    return res.status(500).json({ error: error || error.message, data: null, message: 'Error in getting project.' });
-  }
 
-}
+    // Send success response with image URLs
+    const projectsWithUrls = projects.map(project => ({
+      ...project._doc,
+      thumbnail: project.thumbnail ? `${req.protocol}://${req.get('host')}/${project.thumbnail}` : null,
+      screenshots: project.screenshots.map(screenshot => `${req.protocol}://${req.get('host')}/${screenshot}`)
+    }));
+
+    res.status(200).json({ projects: projectsWithUrls });
+  } catch (err) {
+    console.error('Error fetching projects:', err);
+    res.status(400).json({ message: 'Error fetching projects', error: err.message });
+  }
+};
 
 module.exports = { createProject, getAllProject };
+
