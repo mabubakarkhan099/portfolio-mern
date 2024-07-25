@@ -8,9 +8,9 @@ function ServicesSection() {
                 <h1 className="text-5xl text-white fw-bold">My <span className="text-orange-400">Services</span></h1>
             </div>
             <div className="grid mobile:grid-cols-1 sm:grid-cols-3 gap-10">
-                <ServicesCard />
-                <ServicesCard />
-                <ServicesCard />
+                <ServicesCard title="Front end Dev" thumbnail="/services/service_1.png" />
+                <ServicesCard title="Landing Page" thumbnail="/services/service_3.png" />
+                <ServicesCard title="Design to Code" thumbnail="/services/service_2.png" />
             </div>
         </div>
     </section>
