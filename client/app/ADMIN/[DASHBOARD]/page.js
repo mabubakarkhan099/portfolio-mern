@@ -1,8 +1,12 @@
+'use client'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import "../dashboard.scss";
 import ProjectForm from "@/components/PageSections/Admin/ProjectForm";
+import { useRouter } from "next/navigation";
 function page() {
+  const router = useRouter()
+  console.log(router);
   return (
     <section className="admin-section min-h-screen">
       <div className="container py-7">
