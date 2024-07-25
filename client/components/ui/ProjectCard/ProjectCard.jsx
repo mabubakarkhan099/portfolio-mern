@@ -7,6 +7,19 @@ import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, Di
 import { useState } from "react";
 import { motion } from "framer-motion";
 
+
+const projectData = [{id: "1", title: "Vinact", description: "This action cannot be undone. This will permanently delete your account and remove your data from our servers."}]
+
+
+
+function ProjectCard({projectData}) {
+  // console.log("cardData", projectData);
+  // const {_id, title, description, type, frame_work, website_link, github_link, thumbnail, screenshots} = projectData
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [dialogDisplayImage, setDialogDisplayImage] = useState("")
+
+
+  
 const cardStyle = {
   backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8) ), url('/product_image_1.png')`,
   backgroundSize: "cover",
@@ -17,11 +30,7 @@ const hoverCardStyle={
   backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.9) ), url('/product_image_1.png')`,
 
 }
-
-const projectData = [{id: "1", title: "Vinact", description: "This action cannot be undone. This will permanently delete your account and remove your data from our servers."}]
-function ProjectCard() {
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [dialogDisplayImage, setDialogDisplayImage] = useState("")
+  
 
   const openDialog = () => {
     setIsDialogOpen(true);
@@ -61,7 +70,7 @@ function ProjectCard() {
         </div>
         <div className="info text-white">
           <h1 className="title text-5xl fw-bold tracking-wider">Vinact</h1>
-          <p className="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus, voluptates.</p>
+          <p className="description">kkk</p>
         </div>
       </motion.div>
     </section>

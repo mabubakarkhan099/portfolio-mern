@@ -20,12 +20,12 @@ const projectSchema = new mongoose.Schema({
   },
   website_link: {
     type: String,
-    validate: {
-      validator: function (v) {
-        return /^(ftp|http|https):\/\/[^ "]+$/.test(v);
-      },
-      message: props => `${props.value} is not a valid URL!`
-    }
+    // validate: {
+    //   validator: function (v) {
+    //     return /^(ftp|http|https):\/\/[^ "]+$/.test(v);
+    //   },
+    //   message: props => `${props.value} is not a valid URL!`
+    // }
   },
   github_link: {
     type: String,

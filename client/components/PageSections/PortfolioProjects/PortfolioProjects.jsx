@@ -1,7 +1,29 @@
+'use client'
 import { Button } from "@/components/ui/button";
 import "./PortfolioProjects.scss";
 import ProjectCard from "@/components/ui/ProjectCard/ProjectCard";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import Image from "next/image";
+
 function PortfolioProjects() {
+  const [projectData, setProjectData] = useState([])
+
+  useEffect(() => {
+
+    const fetchData = async () => {
+      try {
+        const res = await axios.get('http://localhost:8000/api/getAll-projects')
+          // console.log("back data",res.data.data);
+        setProjectData(res.data.data)
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, [])
+  
   return (
     <section>
       <div className="projects container py-14">
@@ -16,7 +38,17 @@ function PortfolioProjects() {
           </div>
         </div>
         <div className="grid mobile:grid-cols-1 sm:grid-cols-3 gap-5 py-5">
+
+          {/* <Image src="localhost:8000/uploads/screenshots-1721901918958-920635867.png" width={50} height={30}  /> */}
+        {/* {projectData.map((data, index) => (
+          <div>
+
+          <ProjectCard projectData={data} key={index} />
+            </div>
+        ))} */}
+          
           {[...Array(5)].map((_, index) => (
+
             <ProjectCard />
             
           ))}
