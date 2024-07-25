@@ -31,7 +31,7 @@ function ProjectForm() {
     if (files) {
       // Handle file input
       setFormData((prevState) => ({
-        ...prevState,
+        ...prevState,        
         [name]: files,
       }));
     } else {
@@ -77,6 +77,7 @@ function ProjectForm() {
 
       // Perform the POST request using axios
       const res = await axios.post(`${serverIP}/projects`, formDataToSend, {
+
         headers: { "Content-Type": "multipart/form-data" },
       });
 

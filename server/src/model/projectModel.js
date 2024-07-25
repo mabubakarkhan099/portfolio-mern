@@ -20,7 +20,6 @@ const projectSchema = new mongoose.Schema({
   },
   website_link: {
     type: String,
-    required: false,
     validate: {
       validator: function (v) {
         return /^(ftp|http|https):\/\/[^ "]+$/.test(v);

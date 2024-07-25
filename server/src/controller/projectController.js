@@ -23,10 +23,22 @@ const createProject = async (req, res) => {
 
     // Send success response
     res.status(201).json({ message: 'Project created successfully', project: newProject });
-  } catch (err) {
-    console.error('Error creating project:', err);
-    res.status(400).json({ message: 'Error creating project', error: err.message });
+  } catch (error) {
+    return res.status(500).json({ error: error || error.message, data: null, message: 'Error in creating project.' });
   }
 };
 
-module.exports = { createProject };
+const getAllProject = async (req, res) => {
+  try {
+    console.log("log1");
+    const projects = await Project.find();
+    console.log("log2");
+    return res.status(200).json({ error: null, data: projects, message: 'Projects retrieved successfully.' });
+    
+   } catch (error) {
+    return res.status(500).json({ error: error || error.message, data: null, message: 'Error in getting project.' });
+  }
+
+}
+
+module.exports = { createProject, getAllProject };
