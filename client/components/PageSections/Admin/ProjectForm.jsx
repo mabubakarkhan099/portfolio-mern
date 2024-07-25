@@ -31,13 +31,13 @@ function ProjectForm() {
     if (files) {
       // Handle file input
       setFormData((prevState) => ({
-        ...prevState,
-        [name]: files
+        ...prevState,        
+        [name]: files,
       }));
     } else {
       setFormData((prevState) => ({
         ...prevState,
-        [name]: value
+        [name]: value,
       }));
     }
   };
@@ -58,7 +58,7 @@ function ProjectForm() {
 
     try {
       if (!serverIP) {
-        console.error('Server IP address is not defined');
+        console.error("Server IP address is not defined");
         return;
       }
 
@@ -80,13 +80,12 @@ function ProjectForm() {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
 
-      console.log('Post successful:', res.data);
+      console.log("Post successful:", res.data);
 
       // Reset the form after successful submission
       setFormData(initialFormState);
-
     } catch (error) {
-      console.error('Error posting data:', error);
+      console.error("Error posting data:", error);
     }
   };
 
