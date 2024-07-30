@@ -1,18 +1,39 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Navbar.scss";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-// import { FaBars } from "react-icons/fa";
-import { FaBars, FaBarsStaggered } from "react-icons/fa6";
+import { FaBars, FaBarsStaggered, FaDownload } from "react-icons/fa6";
+import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { Link } from "react-scroll";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  
+ 
+
+  useGSAP(() => {
+    gsap.from("nav", {
+      y: -40,
+      opacity: 0,
+    });
+  });
+  useGSAP(() => {
+    gsap.from(".nav-item", {
+      y: -40,
+      opacity: 0,
+      // gutter: 0.3,
+      stagger: 0.15,
+    });
+  });
+ 
 
   return (
     <>
-      <div className="mobile:px-3 container mt-3">
-        <nav className="bg-black mobile:rounded-2xl lg:rounded-full p-2">
+      <div className="mobile:px-3 container mt-3 " id="navbar">
+        <nav className="bg-black mobile:rounded-2xl sm:overflow-hidden lg:rounded-full p-2">
           <div className="mx-auto flex items-center justify-between">
             {/* Left links */}
             <div className="hidden text-xl lg:block nav-item active">
@@ -20,15 +41,15 @@ function Navbar() {
                 Home
               </a>
             </div>
-            <div className="hidden text-xl lg:block nav-item">
-              <a href="#" className="nav-link">
-                About
-              </a>
+            <div className={` hidden text-xl lg:block nav-item`} >
+              <Link to="hire-me-section" spy={true} smooth={true} offset={0} duration={700} className="nav-link cursor-pointer z-50 ">
+                Hire Me
+              </Link>
             </div>
             <div className="hidden text-xl lg:block nav-item">
-              <a href="#" className="nav-link">
+              <Link to="services-section" spy={true} smooth={true} offset={0} duration={500} className="nav-link cursor-pointer">
                 Service
-              </a>
+              </Link>
             </div>
 
             {/* Logo / Brand */}
@@ -43,24 +64,24 @@ function Navbar() {
 
             {/* Right links */}
             <div className="hidden text-xl lg:block nav-item">
-              <a href="#" className="nav-link">
-                Resume
-              </a>
+              <Link to="#" spy={true} smooth={true} offset={0} duration={500} className="nav-link cursor-pointer flex gap-2">
+                Resume <FaDownload />
+              </Link>
             </div>
             <div className="hidden text-xl lg:block nav-item">
-              <a href="#" className="nav-link">
+              <Link to="portfolio-section" spy={true} smooth={true} offset={-10} duration={500} className="nav-link cursor-pointer">
                 Projects
-              </a>
+              </Link>
             </div>
             <div className="hidden text-xl lg:block nav-item">
-              <a href="#" className="nav-link">
+              <Link to="connect-section" spy={true} smooth={true} offset={-50} duration={1000} className="nav-link cursor-pointer">
                 Contact
-              </a>
+              </Link>
             </div>
 
             <div className="navbar-toggler mobile:block lg:hidden">
               <Button className="bg-transparent hover:bg-transparent active:bg-transparent" onClick={() => setIsOpen(!isOpen)}>
-                {isOpen === false? <FaBars /> : <FaBarsStaggered /> }
+                {isOpen === false ? <FaBars /> : <FaBarsStaggered />}
               </Button>
             </div>
           </div>

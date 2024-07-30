@@ -2,7 +2,7 @@ import ServicesCard from "@/components/ui/ServicesCard/ServicesCard"
 import "./ServicesSection.scss"
 function ServicesSection() {
   return (
-    <section className='services-section rounded-3xl'>
+    <section className='services-section rounded-3xl z-[+2]' id="services-section">
         <div className='container py-10'>
             <div className="py-5 mb-10">
                 <h1 className="text-5xl text-white fw-bold">My <span className="text-orange-400">Services</span></h1>

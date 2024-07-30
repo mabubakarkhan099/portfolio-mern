@@ -1,20 +1,21 @@
 import { Button } from '@/components/ui/button'
 import React from 'react'
 import "./HeroSection.scss"
-import { Numans } from 'next/font/google'
 import Image from 'next/image'
 import { FaFileDownload, FaQuoteLeft, FaStar } from "react-icons/fa";
 
-const numans = Numans({subsets: ["latin"], weight: "400"})
+
+
 
 function HeroSection() {
+    
   return (
     <div className='container relative pt-10 hero-section'>
         
         <div className='flex justify-center'>
             <div className='text-center'>
-                <Button className="button btn-hello bg-white text-black" >Hello</Button>
-                <div className={`info-heading font-extrabold mobile:text-4xl sm:text-5xl md:text-8xl mt-5`} >
+                <Button className="button btn-hello bg-white text-black outline outline-1 relative hover:bg-white cursor-default" >Hello</Button>
+                <div className={`info-heading font-extrabold mobile:text-4xl sm:text-5xl md:text-8xl mt-5 relative`} >
                     <h1>I'm <span className='text-orange-400'>Khan</span>,</h1>
                     <h1>Web Developer</h1>
                 </div>
