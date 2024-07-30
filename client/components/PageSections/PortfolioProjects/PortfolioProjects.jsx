@@ -14,8 +14,8 @@ function PortfolioProjects() {
     const fetchData = async () => {
       try {
         const res = await axios.get('http://localhost:8000/api/getAll-projects')
-          // console.log("back data",res.data.data);
-        setProjectData(res.data.data)
+          // console.log("back data",res.data.projects);
+        setProjectData(res.data.projects)
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -26,7 +26,7 @@ function PortfolioProjects() {
   
   return (
     <section>
-      <div className="projects container py-14">
+      <div className="projects container py-14" id="portfolio-section">
         <div className="grid grid-cols-2">
           <div className="heading">
             <h1 className="mobile:text-3xl sm:text-6xl fw-bold">
@@ -39,19 +39,21 @@ function PortfolioProjects() {
         </div>
         <div className="grid mobile:grid-cols-1 sm:grid-cols-3 gap-5 py-5">
 
-          {/* <Image src="localhost:8000/uploads/screenshots-1721901918958-920635867.png" width={50} height={30}  /> */}
-        {/* {projectData.map((data, index) => (
-          <div>
-
-          <ProjectCard projectData={data} key={index} />
-            </div>
-        ))} */}
-          
+        
+          {/* <Image src="http://localhost:8000/uploads\\screenshots-1721970956699-45279244.png" width={50} height={30}  /> */}
+        {projectData.map((data, index) => {
+          return(
+            <>
+              <ProjectCard projectData={data} key={index} />
+            </>
+          )
+        })}
+{/*           
           {[...Array(5)].map((_, index) => (
 
             <ProjectCard />
             
-          ))}
+          ))} */}
 
         </div>
       </div>

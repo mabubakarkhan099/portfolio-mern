@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 
 function HireMeSection() {
   return (
-    <section className="bg-slate-100 mobile:rounded-none sm:rounded-3xl">
+    <section className="bg-slate-100 mobile:rounded-none sm:rounded-3xl" id="hire-me-section">
         <div className="container py-14">
             <div className="grid mobile:grid-cols-1 sm:grid-cols-5">
                 <div className="personal-image sm:col-span-2">

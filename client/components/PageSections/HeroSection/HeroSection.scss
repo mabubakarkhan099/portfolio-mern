@@ -1,31 +1,21 @@
 @import "@/app/sass/mixin";
 
-.btn-hello {
-  outline: 1px solid black;
-  position: relative;
-  cursor: default;
-  &:hover {
-    background: white;
-    &::after {
-      transform: scale(1.2);
-    }
-  }
-  &::after {
-    content: "";
-    display: block;
-    aspect-ratio: 1/1;
-    width: 25px;
-    background: url("/vectorBars.svg");
-    background-repeat: no-repeat;
-    background-size: contain;
-    position: absolute;
-    right: -17px;
-    top: -17px;
-    transition: 0.1s;
-  }
+.btn-hello::after{
+  content: "";
+  display: block;
+  aspect-ratio: 1/1;
+  width: 25px;
+  background: url("/vectorBars.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  right: -17px;
+  top: -17px;
+  transition: 0.1s;
+  
 }
 .hero-section {
-  z-index: -1;
+  // z-index: -1;
   //   outline: 2px solid black;
   //   @apply bg-red-300;
   overflow: hidden;

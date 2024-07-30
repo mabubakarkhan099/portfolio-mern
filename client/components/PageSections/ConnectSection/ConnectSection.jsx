@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 
 function ConnectSection() {
   return (
-    <section className="connect-section mobile:rounded-none sm:rounded-3xl duration-700">
+    <section className="connect-section mobile:rounded-none sm:rounded-3xl duration-700" id="connect-section">
       <div className="container py-10 grid gap-10 place-items-center">
         <div className="heading text-center text-white text-5xl fw-bold">
           <h1>
