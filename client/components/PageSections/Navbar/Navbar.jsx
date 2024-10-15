@@ -1,42 +1,24 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import "./Navbar.scss";
+"use client"; // Indicates that this component is a client-side component
+import React, { useState } from "react";
+import "./Navbar.scss"; // Importing the stylesheet for the navbar
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { FaBars, FaBarsStaggered, FaDownload } from "react-icons/fa6";
-import { useRef } from "react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { Link } from "react-scroll";
+import { Button } from "@/components/ui/button"; // Custom button component
+import { FaBars, FaBarsStaggered, FaDownload } from "react-icons/fa6"; // Importing icons for the navbar
+import { Link } from "react-scroll"; // Smooth scrolling for navigation links
 
 function Navbar() {
+  const resumeLink = process.env.RESUME_LINK;
+  // State to manage mobile menu visibility
   const [isOpen, setIsOpen] = useState(false);
-  
- 
 
-  useGSAP(() => {
-    gsap.from("nav", {
-      y: -40,
-      opacity: 0,
-    });
-  });
-  useGSAP(() => {
-    gsap.from(".nav-item", {
-      y: -40,
-      opacity: 0,
-      // gutter: 0.3,
-      stagger: 0.15,
-    });
-  });
- 
 
   return (
     <>
       <div className="mobile:px-3 container mt-3 " id="navbar">
         <nav className="bg-black mobile:rounded-2xl sm:overflow-hidden lg:rounded-full p-2">
           <div className="mx-auto flex items-center justify-between">
-            {/* Left links */}
-            <div className="hidden text-xl lg:block nav-item active">
+            {/* Left links (desktop view) */}
+            <div className="hidden text-xl lg:block nav-item">
               <a href="#" className="nav-link">
                 Home
               </a>
@@ -55,17 +37,17 @@ function Navbar() {
             {/* Logo / Brand */}
             <div className="text-orange-400 text-2xl mobile:cursor-pointer sm:cursor-default">
               <div className="mobile:hidden lg:block">
-                <Image src="/ak_logo.png" width={50} height={20} />
+                <Image src="/ak_logo.png" width={50} height={20} alt="minimal ak logo" />
               </div>
               <div className="mobile:block lg:hidden">
-                <Image src="/khanlogo.png" width={110} height={20} />
+                <Image src="/khanlogo.png" width={110} height={20} alt="khan logo for navbar" />
               </div>
             </div>
 
-            {/* Right links */}
+            {/* Right links (desktop view) */}
             <div className="hidden text-xl lg:block nav-item">
-              <Link to="#" spy={true} smooth={true} offset={0} duration={500} className="nav-link cursor-pointer flex gap-2">
-                Resume <FaDownload />
+              <Link href={resumeLink} target="_blank" className="nav-link cursor-pointer flex gap-2">
+                Resume
               </Link>
             </div>
             <div className="hidden text-xl lg:block nav-item">
@@ -79,6 +61,7 @@ function Navbar() {
               </Link>
             </div>
 
+            {/* Mobile menu toggle button */}
             <div className="navbar-toggler mobile:block lg:hidden">
               <Button className="bg-transparent hover:bg-transparent active:bg-transparent" onClick={() => setIsOpen(!isOpen)}>
                 {isOpen === false ? <FaBars /> : <FaBarsStaggered />}

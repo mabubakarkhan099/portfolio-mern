@@ -6,22 +6,24 @@ import HireMeSection from "@/components/PageSections/HireMeSection/HireMeSection
 import Navbar from "@/components/PageSections/Navbar/Navbar";
 import PortfolioProjects from "@/components/PageSections/PortfolioProjects/PortfolioProjects";
 import ServicesSection from "@/components/PageSections/ServicesSection/ServicesSection";
-import UpButton from "@/components/ui/UpButton/UpButton";
-import Image from "next/image";
+import ClientAnimationWrapper from "@/components/ui/AnimationsWrapper";
+import ScrollToTopButton from "@/components/ui/UpButton/ScrollToTopButton";
 
 export default function Home() {
   return (
     <>
-    
-      <UpButton />
-      <Navbar />
-      <HeroSection />
-      <ServicesSection />
-      <Experience />
-      <HireMeSection />
-      <PortfolioProjects />
-      <ConnectSection />
-      <Footer />
+      <ClientAnimationWrapper>
+        <Navbar />
+        <HeroSection />
+        <ServicesSection />
+        <Experience />
+        <HireMeSection />
+        <PortfolioProjects />
+        {/* <ConnectSection /> */}
+        <Footer />
+        <ScrollToTopButton />
+      </ClientAnimationWrapper>
+
     </>
   );
 }

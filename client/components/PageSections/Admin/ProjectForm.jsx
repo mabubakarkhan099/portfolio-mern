@@ -11,7 +11,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 function ProjectForm() {
-  const serverIP = process.env.NEXT_PUBLIC_SERVER_URL;
   const initialFormState = {
     title: "",
     description: "",
@@ -55,42 +54,39 @@ function ProjectForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     try {
-      if (!serverIP) {
-        console.error("Server IP address is not defined");
-        return;
-      }
-
-      // Create a FormData object and append all form data
       const formDataToSend = new FormData();
+  
       for (const key in formData) {
         if (formData[key] instanceof FileList) {
-          // Append each file separately
-          for (let i = 0; i < formData[key].length; i++) {
-            formDataToSend.append(key, formData[key][i]);
+          if (key === "screenshots") {
+            Array.from(formData[key]).forEach((file) => {
+              formDataToSend.append('screenshots', file);
+            });
+          } else {
+            formDataToSend.append(key, formData[key][0]);
           }
         } else {
           formDataToSend.append(key, formData[key]);
         }
       }
-
-      // Perform the POST request using axios
-      const res = await axios.post(`${serverIP}/create-projects`, formDataToSend, {
-
-
+  
+      const res = await axios.post(`/api/projects`, formDataToSend, {
         headers: { "Content-Type": "multipart/form-data" },
-
       });
-
+  
       console.log("Post successful:", res.data);
-
-      // Reset the form after successful submission
       setFormData(initialFormState);
     } catch (error) {
-      console.error("Error posting data:", error);
+      if (error.response) {
+        console.error("Error posting data:", error.response.data);
+      } else {
+        console.error("Error posting data:", error.message);
+      }
     }
   };
+  
 
   return (
     <>

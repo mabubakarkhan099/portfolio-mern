@@ -13,7 +13,12 @@ nav{
         padding: 15px 30px;
         position: relative;
         overflow: hidden;
+        // transition: 0.4s;
         // z-index: 3;
+        &:hover{
+            @apply bg-orange-400;
+            transition: 0.3s,
+        }
         
         .nav-link{
             @apply text-white;

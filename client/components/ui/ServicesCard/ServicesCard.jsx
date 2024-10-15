@@ -13,7 +13,7 @@ function ServicesCard({title, thumbnail}) {
       </div>
       <div className="bottom-section">
         <div className="image-wrapper">
-          <Image src={thumbnail} className="opacity-1" width={0} height={0} layout="responsive" />
+          <Image src={thumbnail} className="opacity-1" width={0} height={0} layout="responsive" alt="card placeholder" />
         </div>
         <div className="goto-link flex items-center justify-center text-6xl text-white bg-gray-800 hover:bg-orange-400 transition-colors">
           <FiArrowUpRight />

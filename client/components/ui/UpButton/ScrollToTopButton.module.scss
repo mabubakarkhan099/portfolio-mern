@@ -1,0 +1,32 @@
+// components/ScrollToTopButton.module.scss
+
+.scrollToTopButton {
+    @apply fixed bottom-4 right-4 p-2 bg-gray-800 text-white rounded-full shadow-lg;
+    @apply flex items-center justify-center cursor-pointer;
+    @apply transition-opacity duration-300 ease-in-out;
+    @apply z-50; // Ensure it appears above other content
+  
+    // Ensure the button remains in the viewport
+    position: fixed;
+    bottom: 1rem; // Adjust as needed for better spacing
+    right: 1rem;  // Adjust as needed for better spacing
+  
+    // Default styles
+    opacity: 0;
+    visibility: hidden;
+    
+    &:hover {
+      @apply bg-gray-600;
+    }
+  
+    svg {
+      @apply w-6 h-6;
+    }
+  
+    // Show button when it should be visible
+    &.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  

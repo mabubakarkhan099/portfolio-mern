@@ -13,9 +13,9 @@ function PortfolioProjects() {
 
     const fetchData = async () => {
       try {
-        const res = await axios.get('http://localhost:8000/api/getAll-projects')
-          // console.log("back data",res.data.projects);
-        setProjectData(res.data.projects)
+        const res = await axios.get('/api/projects')
+          // console.log("back data",res.data);
+        setProjectData(res.data)
       } catch (error) {
         console.error('Error fetching data:', error);
       }

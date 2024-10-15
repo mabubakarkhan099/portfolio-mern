@@ -1,0 +1,7 @@
+.skills-section .skill {
+    transition: 0.4s;
+    cursor: default;
+}
+.skills-section:has(.skill:hover)>.skill:not(:hover) {
+    opacity: 0.5;   
+}

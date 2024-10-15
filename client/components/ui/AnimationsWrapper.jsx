@@ -1,12 +1,12 @@
-'use client';
-import { animateInfoHeading, navbarAnimation } from '@/lib/useGsapAnimations';
-import { useEffect } from 'react';
-
+"use client";
+import { HeroAnimations, HireSectionAnimations, navbarAnimations } from "@/lib/useGsapAnimations";
+import { useEffect } from "react";
 
 const ClientAnimationWrapper = ({ children }) => {
   useEffect(() => {
-    animateInfoHeading();
-    navbarAnimation()
+    navbarAnimations();
+    // HeroAnimations();
+    HireSectionAnimations();
   }, []);
 
   return <>{children}</>;

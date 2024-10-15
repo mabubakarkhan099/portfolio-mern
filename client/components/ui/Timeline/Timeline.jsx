@@ -1,14 +1,14 @@
 import "./Timelins.scss";
 
-function Timeline() {
+function Timeline({company, date, designation, description}) {
   return (
     <div className="timelines-wrapper relative">
       <div className="timeline">
         <div className="grid grid-cols-5">
           <div className="left-side mobile:col-span-4 sm:col-span-2 mobile:col-start-2 sm:col-start-1 mb-3">
             <div className="institute grid gap-3">
-              <hi className="institute-name fw-bold sm:text-4xl">Cognizant, Mumbai</hi>
-              <p className="date text-gray-500">Sep 2020 - June 2021</p>
+              <hi className="institute-name fw-bold sm:text-4xl">{company}</hi>
+              <p className="date text-gray-500">{date}</p>
             </div>
           </div>
 
@@ -21,8 +21,8 @@ function Timeline() {
           </div>
           <div className="right-side mobile:col-span-4 mobile:col-start-2 sm:col-span-2 mb-3">
             <div className="institute grid gap-3">
-              <hi className="designation fw-bold sm:text-4xl">Experience Designer</hi>
-              <p className="description text-gray-500">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati maiores quas praesentium earum commodi? Omnis consectetur sapiente laborum ullam rem?</p>
+              <hi className="designation fw-bold sm:text-4xl">{designation}</hi>
+              <p className="description text-gray-500">{description}</p>
             </div>
           </div>
         </div>
